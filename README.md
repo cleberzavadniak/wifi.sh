@@ -11,6 +11,25 @@ point.
 * `dhcpcd`
 * probably, `firmware-linux`
 
+### Install dependencies on debian-based distros
+
+```bash
+$ sudo apt-get install iw dhcpcd
+$ sudo apt-get install firmware-linux  # If your wireless card needs it.
+```
+
+## Instalation
+
+```bash
+$ cd ~/code/third-party  # Or wherever you use to clone third parties repositories.
+$ git clone git@github.com:cleberzavadniak/wifi.sh.git
+$ cd ~/bin; ln -s ~/code/third-party/wifi.sh/wifi.sh .
+```
+
+Make sure your "$HOME/bin" is present in your PATH.
+
+Or create a link directly into `/usr/local/sbin`. You decide.
+
 ## Usage
 
 ```bash
@@ -19,12 +38,6 @@ $ ./wifi.sh wlan0 list | less  # List Access Points. Search for "SSID:"
 $ ./wifi.sh wlan0 connect <ap-ssid>  # Connect into an WPA/WPA2 AP
 ```
 
-### Install on debian-based distros
-
-```bash
-$ sudo apt-get install iw dhcpcd
-$ sudo apt-get install firmware-linux  # If your wireless card needs it.
-```
 
 ## Troubleshooting
 
