@@ -11,6 +11,14 @@ point.
 * `dhcpcd`
 * probably, `firmware-linux`
 
+## Usage
+
+```bash
+$ ./wifi.sh -h  # Help!
+$ ./wifi.sh wlan0 list | less  # List Access Points. Search for "SSID:"
+$ ./wifi.sh wlan0 connect <ap-ssid>  # Connect into an WPA/WPA2 AP
+```
+
 ### Install on debian-based distros
 
 ```bash
