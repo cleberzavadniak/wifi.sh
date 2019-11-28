@@ -15,11 +15,11 @@ else
 fi
 
 
-function list () {
+function list {
     iw $interface scan | egrep '(SSID|)' --color
 }
 
-function enter_password () {
+function enter_password {
     ssid=$1
     ssid_path="/tmp/wpa.$(echo $ssid | sed 's:[^a-zA-Z0-9]:-:g')"
 
@@ -35,14 +35,17 @@ function enter_password () {
     echo $ssid_path
 }
 
-function connect () {
+function connect {
     ssid=$1
     ssid_path=$(enter_password $ssid)
-    dhcpcd $interface
+    echo "dhcpcd"
+    dhcpcd $interface --timeout 120 &
+    echo "wpa_supplicant"
     wpa_supplicant -i $interface -c $ssid_path
+    echo "connect.exit"
 }
 
-function help () {
+function help {
     echo "Usage:"
     echo "    $cmd_basename <interface> list"
     echo "    $cmd_basename <interface> connect <ap_ssid>"
